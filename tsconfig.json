@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "removeComments": true,
+        "experimentalDecorators": true,
+        "outDir": "./src",
+        "rootDir": "./es",
+        "declaration": true
+    },
+    "include": [
+        "./es/**/*"
+    ]
+}
