@@ -33,4 +33,9 @@ nanguaStatistics.listenControlEle(url);
 <span event-track-click event-track-param-rentUnitId="1111"></span>
 绑定`event-track-click`属性的称为控件元素
 event-track-param-xxxx1='xxxx' xxxx1为传递的参数键，属性值为传递的参数值
+
+3.配置公共参数
+NanguaStatistics.commonParams = {
+    
+};
 ```
