@@ -1,7 +1,10 @@
 "use strict";
-const dom_1 = require('./lib/dom');
-const utils_1 = require('./lib/utils');
-const imageCross_1 = require('./lib/imageCross');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Ramda = require("ramda");
+const dom_1 = require("./lib/dom");
+const utils_1 = require("./lib/utils");
+const imageCross_1 = require("./lib/imageCross");
+console.log('Ramda', Ramda);
 class Statistics {
     isControlEle(dom) {
         return dom.getAttribute(Statistics.TrackIde.EVENT_TRACK_CLICK);
@@ -10,7 +13,7 @@ class Statistics {
         if (this.isControlEle(dom) || dom === null) {
             return dom;
         }
-        this.upFindedControlEle(dom_1.getDomParent(dom));
+        return this.upFindedControlEle(dom_1.getDomParent(dom));
     }
     genParamsByControlEle(controlDom) {
         const paramsObj = {};
@@ -28,16 +31,20 @@ class Statistics {
         const reqUrl = `${url}?${reqDataStr}`;
         imageCross_1.default(reqUrl);
     }
-    listenControlEle() {
-        document.addEventListener('click', (e) => {
+    listenControlEle(url) {
+        document.addEventListener('touchstart', (e) => {
             const targetDom = e.target;
+            const controlDom = this.upFindedControlEle(targetDom);
+            if (controlDom) {
+                const params = this.genParamsByControlEle(controlDom);
+                this.pv(url, params);
+            }
         });
     }
 }
 Statistics.commonParams = {};
 Statistics.TrackIde = {
-    EVENT_TRACK_CLICK: 'event-track-click',
-    EVENT_TRACK_PARAM: 'event-track-param',
+    EVENT_TRACK_CLICK: 'data-event-track-click',
+    EVENT_TRACK_PARAM: 'data-event-track-param',
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = Statistics;

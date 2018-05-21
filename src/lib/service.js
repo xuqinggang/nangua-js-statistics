@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const Service = {
     baseConfig: {},
     reqServer(url, paramters, type, extraConf = {}) {
@@ -95,5 +96,4 @@ const Service = {
         return Service.reqServer(url, {}, 'DELETE');
     },
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = Service;

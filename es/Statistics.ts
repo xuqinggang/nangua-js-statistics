@@ -1,12 +1,15 @@
+import * as Ramda from 'ramda';
+import React from 'react';
 import { getDomParent, getAttributesByReg } from './lib/dom';
 import { genParamsObjToUrl } from './lib/utils';
 import imageCrossReq from './lib/imageCross';
 
+console.log('Ramda', Ramda)
 export default class Statistics {
     static commonParams = {};
     static TrackIde = {
-        EVENT_TRACK_CLICK: 'event-track-click',
-        EVENT_TRACK_PARAM: 'event-track-param',
+        EVENT_TRACK_CLICK: 'data-event-track-click',
+        EVENT_TRACK_PARAM: 'data-event-track-param',
     };
 
     // 是否是控件元素
@@ -20,7 +23,7 @@ export default class Statistics {
             return dom;
         }
 
-        this.upFindedControlEle(getDomParent(dom));
+        return this.upFindedControlEle(getDomParent(dom));
     }
 
     // 生成控件元素携带的参数键值对象
@@ -46,9 +49,14 @@ export default class Statistics {
         imageCrossReq(reqUrl);
     }
 
-    public listenControlEle() {
-        document.addEventListener('click', (e: Event) => {
+    public listenControlEle(url: string) {
+        document.addEventListener('touchstart', (e: Event) => {
             const targetDom = e.target;
+            const controlDom = this.upFindedControlEle(targetDom as HTMLElement);
+            if (controlDom) {
+                const params = this.genParamsByControlEle(controlDom);
+                this.pv(url, params);
+            }
         });
     }
 }

@@ -3,11 +3,12 @@ export function getAttributesByReg(dom, reg) {
     const rt = [];
     const attributes = dom.attributes;
     attributes.forEach((attribute) => {
-        const regRt = attribute.match(reg)
+        const name = attribute.name;
+        const regRt = name.match(reg)
         if (regRt) {
             rt.push({
                 regRt,
-                attribute,
+                attribute: name,
             });
         }
     });
@@ -22,4 +23,3 @@ export function getDomParent(dom) {
 export function traverseUpPhase(dom) {
 
 }
-//  /event-track-param-(\s+)/g

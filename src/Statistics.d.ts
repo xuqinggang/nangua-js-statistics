@@ -8,5 +8,5 @@ export default class Statistics {
     private upFindedControlEle(dom);
     private genParamsByControlEle(controlDom);
     pv(url: string, paramsObj: {}): void;
-    listenControlEle(): void;
+    listenControlEle(url: string): void;
 }

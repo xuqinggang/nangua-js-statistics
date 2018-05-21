@@ -2,9 +2,9 @@
     "compilerOptions": {
         "target": "ES6",
         "module": "commonjs",
-        "moduleResolution": "node",
         "removeComments": true,
         "experimentalDecorators": true,
+        "typeRoots": ["./node_modules/@types"],
         "outDir": "./src",
         "rootDir": "./es",
         "declaration": true

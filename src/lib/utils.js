@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function genParamsObjToUrl(paramsObj) {
     let reqData = '';
     if (typeof paramsObj === 'object' && Object.keys(paramsObj).length) {
