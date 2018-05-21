@@ -1,10 +1,7 @@
-import * as Ramda from 'ramda';
-import React from 'react';
 import { getDomParent, getAttributesByReg } from './lib/dom';
 import { genParamsObjToUrl } from './lib/utils';
 import imageCrossReq from './lib/imageCross';
 
-console.log('Ramda', Ramda)
 export default class Statistics {
     static commonParams = {};
     static TrackIde = {
