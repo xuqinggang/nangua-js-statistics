@@ -1,1 +1,3 @@
-export declare function genParamsObjToUrl(paramsObj: any): string;
+export declare function genParamsObjToUrl(paramsObj: {
+    [key: string]: any;
+}): string;

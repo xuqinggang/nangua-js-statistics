@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-require("core-js");
 function getAttributesByReg(dom, reg) {
     var rt = [];
     var attributes = Array.from(dom.attributes);
