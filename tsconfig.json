@@ -1,15 +1,24 @@
 {
     "compilerOptions": {
-        "target": "ES6",
+        "target": "ES5",
         "module": "commonjs",
         "removeComments": true,
         "experimentalDecorators": true,
+        "declaration": true,
         "typeRoots": ["./node_modules/@types"],
         "outDir": "./src",
         "rootDir": "./es",
-        "declaration": true
+        "lib": ["DOM", "DOM.Iterable", "ES6", "ES7"],
+        "noEmitHelpers": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "strict": true
     },
     "include": [
         "./es/**/*"
+    ],
+    "exclude": [
+        "node_modules"
     ]
 }

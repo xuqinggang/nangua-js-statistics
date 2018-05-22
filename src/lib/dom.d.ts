@@ -1,3 +1,3 @@
-export declare function getAttributesByReg(dom: any, reg: any): any[];
-export declare function getDomParent(dom: any): any;
-export declare function traverseUpPhase(dom: any): void;
+import "core-js";
+export declare function getAttributesByReg(dom: HTMLElement, reg: RegExp): any[];
+export declare function getDomParent(dom: HTMLElement): Node | null;

@@ -3,7 +3,7 @@ export default (function() {
     imgNode.style.display = 'none';
     document.body.appendChild(imgNode);
 
-    return function(src) {
+    return function(src: string) {
         imgNode.src = src;
     }
 })();

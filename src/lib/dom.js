@@ -1,14 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+require("core-js");
 function getAttributesByReg(dom, reg) {
-    const rt = [];
-    const attributes = dom.attributes;
-    attributes.forEach((attribute) => {
-        const name = attribute.name;
-        const regRt = name.match(reg);
+    var rt = [];
+    var attributes = Array.from(dom.attributes);
+    var m = new Map();
+    attributes.forEach(function (attribute) {
+        var name = attribute.name;
+        var regRt = name.match(reg);
         if (regRt) {
             rt.push({
-                regRt,
+                regRt: regRt,
                 attribute: name,
             });
         }
@@ -20,6 +22,3 @@ function getDomParent(dom) {
     return dom.parentNode;
 }
 exports.getDomParent = getDomParent;
-function traverseUpPhase(dom) {
-}
-exports.traverseUpPhase = traverseUpPhase;

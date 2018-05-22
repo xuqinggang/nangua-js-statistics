@@ -6,7 +6,7 @@ export interface IService {
     baseConfig: {
         commonParamters?: {},
     };
-    reqServer: (url: string, paramters: {}, type: string, extraConf?: IExtraConf) => void;
+    reqServer: (url: string, paramters: {[key: string]: any}, type: string, extraConf?: IExtraConf) => void;
 
     get: (url: string, paramters: {}, extraConf: IExtraConf) => void;
 

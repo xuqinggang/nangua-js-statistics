@@ -1,7 +1,8 @@
 //  /event-track-param-(\S+))/g
-export function getAttributesByReg(dom, reg) {
-    const rt = [];
-    const attributes = dom.attributes;
+export function getAttributesByReg(dom: HTMLElement, reg: RegExp) {
+    const rt: Array<any> = [];
+    const attributes = Array.from(dom.attributes);
+    const m = new Map();
     attributes.forEach((attribute) => {
         const name = attribute.name;
         const regRt = name.match(reg)
@@ -16,10 +17,6 @@ export function getAttributesByReg(dom, reg) {
     return rt;
 }
 
-export function getDomParent(dom) {
+export function getDomParent(dom: HTMLElement) {
     return dom.parentNode;
-}
-
-export function traverseUpPhase(dom) {
-
 }

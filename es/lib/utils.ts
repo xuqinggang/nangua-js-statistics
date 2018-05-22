@@ -1,4 +1,4 @@
-export function genParamsObjToUrl(paramsObj) {
+export function genParamsObjToUrl(paramsObj: {[key: string]: any}) {
     // 请求参数
     let reqData = '';
     if (typeof paramsObj === 'object' && Object.keys(paramsObj).length) {

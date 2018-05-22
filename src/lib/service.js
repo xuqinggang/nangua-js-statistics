@@ -1,18 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Service = {
+var Service = {
     baseConfig: {},
-    reqServer(url, paramters, type, extraConf = {}) {
-        const { commonParamters, } = Service.baseConfig;
-        const { contentType = 'json', timeout = 10000, } = extraConf;
+    reqServer: function (url, paramters, type, extraConf) {
+        if (extraConf === void 0) { extraConf = {}; }
+        var commonParamters = Service.baseConfig.commonParamters;
+        var _a = extraConf.contentType, contentType = _a === void 0 ? 'json' : _a, _b = extraConf.timeout, timeout = _b === void 0 ? 10000 : _b;
         if (commonParamters) {
             Object.assign(paramters, commonParamters);
         }
-        const promise = new Promise((resolve, reject) => {
-            const xmlHttp = new XMLHttpRequest();
-            let reqData = '';
+        var promise = new Promise(function (resolve, reject) {
+            var xmlHttp = new XMLHttpRequest();
+            var reqData = '';
             if (typeof paramters === 'object' && Object.keys(paramters).length) {
-                for (const key in paramters) {
+                for (var key in paramters) {
                     if (Object.prototype.hasOwnProperty.call(paramters, key)) {
                         if (paramters[key] instanceof Array) {
                             reqData += key + '=' + JSON.stringify(paramters[key]) + '&';
@@ -24,17 +25,17 @@ const Service = {
                 }
                 reqData = reqData.substr(0, reqData.length - 1);
             }
-            xmlHttp.onload = () => {
+            xmlHttp.onload = function () {
                 if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
                     try {
-                        const result = JSON.parse(xmlHttp.responseText);
-                        console.log(`回调success:server:url=${url} [result]=`, result);
+                        var result = JSON.parse(xmlHttp.responseText);
+                        console.log("\u56DE\u8C03success:server:url=" + url + " [result]=", result);
                         if (result && result.code === 200) {
                             resolve(result);
                         }
                         else {
-                            const errRt = JSON.parse(xmlHttp.responseText);
-                            console.error(`回调error:server:url=${url} [errRt]=`, errRt);
+                            var errRt = JSON.parse(xmlHttp.responseText);
+                            console.error("\u56DE\u8C03error:server:url=" + url + " [errRt]=", errRt);
                             reject(errRt);
                         }
                     }
@@ -46,12 +47,12 @@ const Service = {
                     reject('服务器错误码:' + xmlHttp.status);
                 }
             };
-            xmlHttp.onerror = () => {
+            xmlHttp.onerror = function () {
                 reject('服务器错误码:' + xmlHttp.status);
             };
             if ('timeout' in xmlHttp && 'ontimeout' in xmlHttp) {
                 xmlHttp.timeout = timeout;
-                xmlHttp.ontimeout = () => {
+                xmlHttp.ontimeout = function () {
                     reject('timeout');
                 };
             }
@@ -68,8 +69,8 @@ const Service = {
                     xmlHttp.send(reqData);
                 }
                 else if (contentType === 'form-data') {
-                    const form = new FormData();
-                    for (const key in paramters) {
+                    var form = new FormData();
+                    for (var key in paramters) {
                         form.append(key, paramters[key]);
                     }
                     xmlHttp.send(form);
@@ -79,20 +80,20 @@ const Service = {
                     xmlHttp.send(JSON.stringify(paramters));
                 }
             }
-            console.info(`请求server: type=${type} url=${url}`);
+            console.info("\u8BF7\u6C42server: type=" + type + " url=" + url);
         });
         return promise;
     },
-    get(url, paramters, extraConf) {
+    get: function (url, paramters, extraConf) {
         return Service.reqServer(url, paramters, 'GET', extraConf);
     },
-    post(url, paramters, extraConf) {
+    post: function (url, paramters, extraConf) {
         return Service.reqServer(url, paramters, 'POST', extraConf);
     },
-    put(url, paramters) {
+    put: function (url, paramters) {
         return Service.reqServer(url, paramters, 'PUT');
     },
-    delete(url) {
+    delete: function (url) {
         return Service.reqServer(url, {}, 'DELETE');
     },
 };

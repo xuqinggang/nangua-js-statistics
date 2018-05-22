@@ -1,3 +1,5 @@
+import * as Ramda from 'ramda';
+import * as jquery from 'jquery';
 import { getDomParent, getAttributesByReg } from './lib/dom';
 import { genParamsObjToUrl } from './lib/utils';
 import imageCrossReq from './lib/imageCross';
@@ -11,7 +13,7 @@ export default class Statistics {
 
     // 是否是控件元素
     private isControlEle(dom: HTMLElement) {
-        return dom.getAttribute(Statistics.TrackIde.EVENT_TRACK_CLICK);
+        return dom && dom.getAttribute && dom.getAttribute(Statistics.TrackIde.EVENT_TRACK_CLICK);
     }
 
     // 向上查找到控件元素

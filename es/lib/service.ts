@@ -1,5 +1,4 @@
 import { IService } from '../types/service';
-
 const Service: IService = {
     baseConfig: {},
     reqServer(url, paramters, type, extraConf = {}) {

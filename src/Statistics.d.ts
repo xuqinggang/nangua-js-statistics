@@ -1,12 +1,3 @@
-export default class Statistics {
-    static commonParams: {};
-    static TrackIde: {
-        EVENT_TRACK_CLICK: string;
-        EVENT_TRACK_PARAM: string;
-    };
-    private isControlEle(dom);
-    private upFindedControlEle(dom);
-    private genParamsByControlEle(controlDom);
-    pv(url: string, paramsObj: {}): void;
-    listenControlEle(url: string): void;
-}
+import '@mtfe/wets-wx-extra';
+declare const _default: {};
+export default _default;
